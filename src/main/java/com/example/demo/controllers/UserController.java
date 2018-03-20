@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,8 +16,6 @@ import com.example.demo.util.RestResponse;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import antlr.StringUtils;
 
 @RestController
 public class UserController {
@@ -38,6 +37,11 @@ public class UserController {
 		this.userService.save(user);
 		
 		return new RestResponse(HttpStatus.OK.value(), "Operación realizada con éxito");
+	}
+	
+	@RequestMapping(value = "/getUsers", method = RequestMethod.GET)
+	public List<User> getUsers() {
+		return this.userService.findAll();
 	}
 	
 	private boolean validate(User user) {
