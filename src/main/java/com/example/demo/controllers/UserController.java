@@ -16,6 +16,8 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import antlr.StringUtils;
+
 @RestController
 public class UserController {
 
@@ -42,15 +44,15 @@ public class UserController {
 		
 		boolean isValid = true;
 		
-		if(user.getFirstName() == null) {
+		if(user.getFirstName() == "" || user.getFirstName() == null) {
 			isValid = false;
 		}
 		
-		if(user.getFirstSurname() == null) {
+		if(user.getFirstSurname() == "" || user.getFirstSurname() == null) {
 			isValid = false;
 		}
 		
-		if(user.getAddress() == null) {
+		if(user.getAddress() == "" || user.getAddress() == null) {
 			isValid = false;
 		}
 		
